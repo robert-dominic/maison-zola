@@ -20,32 +20,34 @@
   --font-sans-body: var(--font-dm-sans);
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(181, 134, 77, 0.12), transparent 30%),
-    linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-end) 100%);
-  color: var(--color-ink);
-  font-family: var(--font-dm-sans), sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at top left, rgba(181, 134, 77, 0.12), transparent 30%),
+      linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-end) 100%);
+    color: var(--color-ink);
+    font-family: var(--font-dm-sans), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
+  a {
+    text-decoration: none;
+    cursor: pointer !important;
+  }
 
-a, button {
-  cursor: pointer;
+  button {
+    cursor: pointer !important;
+  }
 }
 
 @layer utilities {

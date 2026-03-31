@@ -60,7 +60,6 @@ export default function Home() {
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-noir">
-            <div className="absolute inset-0" />
             <Image
               src={heroImages[1]}
               alt="African fashion portrait"

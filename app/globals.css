@@ -44,6 +44,12 @@ a {
   cursor: pointer;
 }
 
-button {
+a, button {
   cursor: pointer;
+}
+
+@layer utilities {
+  .font-serif-display { font-family: var(--font-cormorant), serif; }
+  .font-serif-copy    { font-family: var(--font-playfair), serif; }
+  .font-sans-body     { font-family: var(--font-dm-sans), sans-serif; }
 }

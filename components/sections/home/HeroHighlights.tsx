@@ -47,7 +47,7 @@ export function HeroHighlights() {
     const interval = window.setInterval(() => {
       setDirection(1)
       setActiveIndex((current) => (current + 1) % highlights.length)
-    }, 15000)
+    }, 20000)
 
     return () => window.clearInterval(interval)
   }, [])

@@ -18,7 +18,7 @@ const highlights = [
   },
   {
     label: 'Continental Perspective',
-    title: 'A Liberian house informed by the richness of Africa’s great dress traditions.',
+    title: "A Liberian house informed by the richness of Africa's great dress traditions.",
     description:
       'The brand draws inspiration from pan-African style codes while keeping every piece polished, modern, and personal.',
   },
@@ -42,14 +42,22 @@ const slideVariants = {
 export function HeroHighlights() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [direction, setDirection] = useState(1)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
       setDirection(1)
       setActiveIndex((current) => (current + 1) % highlights.length)
     }, 20000)
 
-    return () => window.clearInterval(interval)
+    return () => clearInterval(interval)
   }, [])
 
   const activeItem = highlights[activeIndex]
@@ -65,10 +73,7 @@ export function HeroHighlights() {
   }
 
   const showItem = (index: number) => {
-    if (index === activeIndex) {
-      return
-    }
-
+    if (index === activeIndex) return
     setDirection(index > activeIndex ? 1 : -1)
     setActiveIndex(index)
   }
@@ -90,7 +95,9 @@ export function HeroHighlights() {
             >
               <span
                 className={`block h-1.5 rounded-full transition-all duration-300 ${
-                  activeIndex === index ? 'w-8 bg-burgundy' : 'w-1.5 bg-burgundy/30 group-hover:bg-burgundy/50'
+                  activeIndex === index
+                    ? 'w-8 bg-burgundy'
+                    : 'w-1.5 bg-burgundy/30 group-hover:bg-burgundy/50'
                 }`}
               />
             </button>
@@ -108,22 +115,18 @@ export function HeroHighlights() {
           exit="exit"
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="space-y-3"
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragDirectionLock
-          dragElastic={0.08}
-          style={{ touchAction: 'pan-y' }}
-          onDragEnd={(_, info) => {
-            if (Math.abs(info.offset.x) < Math.abs(info.offset.y)) {
-              return
-            }
-
-            if (info.offset.x <= -40) {
-              showNext()
-            } else if (info.offset.x >= 40) {
-              showPrevious()
-            }
-          }}
+          {...(isMobile ? {
+            drag: 'x' as const,
+            dragConstraints: { left: 0, right: 0 },
+            dragDirectionLock: true,
+            dragElastic: 0.08,
+            style: { touchAction: 'pan-y' },
+            onDragEnd: (_: unknown, info: { offset: { x: number; y: number } }) => {
+              if (Math.abs(info.offset.x) < Math.abs(info.offset.y)) return
+              if (info.offset.x <= -40) showNext()
+              else if (info.offset.x >= 40) showPrevious()
+            },
+          } : {})}
         >
           <p className="font-sans-body text-[10px] tracking-[0.28em] uppercase text-stone">
             {activeItem.label}

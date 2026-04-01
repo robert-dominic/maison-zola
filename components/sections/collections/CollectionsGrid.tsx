@@ -1,0 +1,60 @@
+'use client'
+
+import { AnimatePresence, motion } from 'framer-motion'
+import { useState } from 'react'
+
+import { FilterBar } from '@/components/sections/collections/FilterBar'
+import { PieceCard } from '@/components/shared/PieceCard'
+import { pieces } from '@/lib/data/collections'
+import { type Category } from '@/types'
+
+export function CollectionsGrid() {
+  const [activeCategory, setActiveCategory] = useState<Category>('all')
+
+  const filtered =
+    activeCategory === 'all'
+      ? pieces
+      : pieces.filter((p) => p.category === activeCategory)
+
+  return (
+    <div className="space-y-10">
+      <FilterBar active={activeCategory} onChange={setActiveCategory} />
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {filtered.length === 0 ? (
+            <div className="py-24 text-center">
+              <p className="font-sans-body text-sm text-stone">
+                No pieces in this category yet.
+              </p>
+            </div>
+          ) : (
+            <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+              {filtered.map((piece, index) => (
+                <motion.div
+                  key={piece.slug}
+                  className="mb-5 break-inside-avoid"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: index * 0.06,
+                  }}
+                >
+                  <PieceCard piece={piece} />
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  )
+}

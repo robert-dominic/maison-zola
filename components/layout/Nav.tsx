@@ -51,7 +51,7 @@ export function Nav() {
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href
+              const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
               return (
                 <Link
                   key={link.href}
@@ -102,7 +102,7 @@ export function Nav() {
               onClick={() => setOpen(false)}
             />
             <motion.aside
-              className="fixed top-0 left-0 z-50 flex h-screen w-[70vw] max-w-sm flex-col border-r border-border bg-cream px-6 pt-6 pb-8 md:hidden"
+              className="fixed top-0 left-0 z-50 flex h-screen w-[75vw] max-w-sm flex-col border-r border-border bg-cream px-6 pt-6 pb-8 md:hidden"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
@@ -127,7 +127,7 @@ export function Nav() {
 
               <nav className="flex flex-col">
                 {navLinks.map((link) => {
-                  const isActive = pathname === link.href
+                  const isActive = pathname === link.href || pathname.startsWith(link.href + ('/'))
                   return (
                     <Link
                       key={link.href}

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Founder from '@/public/images/about/founder.jpeg'
 
 export function FounderStory() {
   return (
@@ -9,7 +10,7 @@ export function FounderStory() {
           {/* Image */}
           <div className="overflow-hidden rounded-lg border border-border bg-cream-muted aspect-[4/5] relative">
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+              src={Founder}
               alt="Maison Zola founder"
               fill
               className="object-cover"

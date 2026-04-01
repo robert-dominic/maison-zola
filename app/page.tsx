@@ -23,13 +23,13 @@ export default function Home() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/collections"
-              className="inline-flex min-w-44 cursor-pointer items-center justify-center rounded-xl bg-burgundy px-6 py-3 font-sans-body text-[11px] tracking-[0.22em] uppercase text-cream transition-colors hover:bg-burgundy-deep"
+              className="inline-flex min-w-44 cursor-pointer items-center justify-center rounded-xl bg-burgundy px-6 py-3 font-sans-body text-[11px] tracking-[0.22em] uppercase text-cream transition-colors duration-300 hover:bg-burgundy-deep"
             >
               View Collections
             </Link>
             <Link
               href="/contact"
-              className="inline-flex min-w-44 cursor-pointer items-center justify-center rounded-xl border border-border bg-cream/40 px-6 py-3 font-sans-body text-[11px] tracking-[0.22em] uppercase text-ink transition-colors hover:border-burgundy hover:text-burgundy"
+              className="inline-flex min-w-44 cursor-pointer items-center justify-center rounded-xl border border-border bg-cream/40 px-6 py-3 font-sans-body text-[11px] tracking-[0.22em] uppercase text-ink transition-colors duration-300 hover:border-burgundy hover:text-burgundy"
             >
               Book Consultation
             </Link>

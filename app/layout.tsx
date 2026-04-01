@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, DM_Sans, Playfair_Display } from 'next/font/google'
+import { PageTransition } from '@/components/layout/PageTransition'
 
 import './globals.css'
 
@@ -36,11 +37,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${playfair.variable} ${dmSans.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" 
+      className={`${cormorant.variable} ${playfair.variable} ${dmSans.variable}`}>
       <body className="min-h-screen">
         <div className="relative min-h-screen">
           <Nav />
-          <main>{children}</main>
+          <main>
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </main>
           <Footer />
         </div>
       </body>

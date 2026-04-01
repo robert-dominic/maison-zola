@@ -114,7 +114,7 @@ export function HeroHighlights() {
           animate="center"
           exit="exit"
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-3"
+          className="space-y-3 h-[180px] overflow-hidden"
           {...(isMobile ? {
             drag: 'x' as const,
             dragConstraints: { left: 0, right: 0 },
@@ -131,7 +131,7 @@ export function HeroHighlights() {
           <p className="font-sans-body text-[10px] tracking-[0.28em] uppercase text-stone">
             {activeItem.label}
           </p>
-          <h2 className="font-serif-display text-2xl leading-tight text-ink md:text-[2rem]">
+          <h2 className="font-serif-display text-2xl leading-tight text-ink md:text-[1.5rem]">
             {activeItem.title}
           </h2>
           <p className="font-sans-body text-sm leading-7 text-stone md:text-[15px]">

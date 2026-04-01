@@ -13,20 +13,16 @@ export function PieceCard({ piece }: PieceCardProps) {
   return (
     <Link
       href={`/collections/${piece.slug}`}
-      className="group block overflow-hidden rounded-lg border border-border bg-cream transition-shadow duration-300 hover:shadow-[0_2px_20px_rgba(36,27,23,0.08)]"
+      className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-cream transition-shadow duration-300 hover:shadow-[0_2px_20px_rgba(36,27,23,0.08)]"
     >
       {/* Image container */}
-      <div
-        className={`relative w-full overflow-hidden bg-cream-muted ${
-          piece.aspectTall ? 'aspect-[3/4]' : 'aspect-[4/3]'
-        }`}
-      >
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-cream-muted">
         <Image
           src={piece.image}
           alt={piece.name}
           fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
         />
 
         {/* Hover overlay */}
@@ -41,7 +37,7 @@ export function PieceCard({ piece }: PieceCardProps) {
       </div>
 
       {/* Card content */}
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         {/* Fabric detail */}
         <div className="mb-2 flex items-center gap-1.5">
           <span className="h-px w-4 bg-gold opacity-60" />
@@ -59,7 +55,7 @@ export function PieceCard({ piece }: PieceCardProps) {
         </p>
 
         {/* View button */}
-        <div className="mt-4 flex items-center gap-1.5">
+        <div className="mt-auto flex items-center gap-1.5 pt-4">
           <span className="font-sans-body text-[10px] tracking-[0.22em] uppercase text-burgundy transition-all duration-200 group-hover:tracking-[0.28em]">
             View Piece
           </span>

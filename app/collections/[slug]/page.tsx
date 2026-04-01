@@ -47,24 +47,26 @@ export default async function PiecePage({ params }: Props) {
         </div>
 
         {/* Hero split */}
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch lg:gap-16">
 
           {/* Image */}
-          <div className="overflow-hidden rounded-lg border border-border bg-cream-muted">
-            <div className={`relative w-full ${piece.aspectTall ? 'aspect-[3/4]' : 'aspect-[4/3]'}`}>
+          <div className="overflow-hidden rounded-lg border border-border bg-cream-muted lg:h-full">
+            <div
+              className={`relative w-full ${piece.aspectTall ? 'aspect-[3/4]' : 'aspect-[4/3]'} lg:h-full lg:aspect-auto`}
+            >
               <Image
                 src={piece.image}
                 alt={piece.name}
                 fill
                 priority
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 55vw"
               />
             </div>
           </div>
 
           {/* Details */}
-          <div className="lg:pt-4 space-y-8 border border-border rounded-xl p-4">
+          <div className="flex h-full flex-col space-y-8 rounded-xl border border-border p-4 lg:pt-4">
 
             {/* Category + fabric */}
             <div>

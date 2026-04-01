@@ -35,11 +35,11 @@ export function CollectionsGrid() {
               </p>
             </div>
           ) : (
-            <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filtered.map((piece, index) => (
                 <motion.div
                   key={piece.slug}
-                  className="mb-5 break-inside-avoid"
+                  className="h-full"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{

@@ -10,9 +10,9 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-noir text-cream">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.1fr_0.8fr_0.8fr] md:px-8">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-8 md:grid-cols-[1.1fr_0.8fr_0.8fr] md:px-8">
         <div className="space-y-5">
-          <p className="font-serif-display text-3xl tracking-[0.16em]">Maison Zola</p>
+          <p className="font-serif-display text-xl tracking-[0.16em]">Maison Zola</p>
           <p className="max-w-md font-sans-body text-sm leading-7 text-stone">
             A Liberian-based African tailoring house shaped around bespoke suiting, ceremonial
             dressing, and refined wardrobes inspired by the continent’s most enduring style codes.

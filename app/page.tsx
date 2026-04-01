@@ -10,10 +10,10 @@ const heroImages = [
 
 export default function Home() {
   return (
-    <section className="px-5 pt-10 pb-20 md:px-8">
+    <section className="px-5 pt-25 pb-20 md:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
         <div className="space-y-8 lg:pt-10">
-          <h1 className="max-w-4xl font-serif-display text-4xl leading-[0.96] tracking-[0.03em] text-ink sm:text-5xl md:text-6xl lg:text-[5rem]">
+          <h1 className="max-w-4xl font-serif-display text-4xl leading-[0.96] tracking-[0.03em] text-ink md:text-4xl lg:text-[4rem]">
             Tailoring African dress codes with modern precision.
           </h1>
           <p className="max-w-lg font-sans-body text-[15px] leading-7 text-stone md:text-base">

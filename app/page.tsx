@@ -2,11 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { HeroHighlights } from '@/components/sections/home/HeroHighlights'
-
-const heroImages = [
-  'https://images.unsplash.com/photo-1738362542911-ab7bd2d18adb?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1742473717014-ca04e722e0b7?auto=format&fit=crop&w=1400&q=80',
-]
+import MainHero from '@/public/images/hero/hero-1.jpeg'
+import SubHero from '@/public/images/hero/hero-2.jpeg'
 
 export default function Home() {
   return (
@@ -41,7 +38,7 @@ export default function Home() {
           <div className="space-y-4">
             <div className="overflow-hidden rounded-2xl border border-border bg-cream/60">
               <Image
-                src={heroImages[0]}
+                src={MainHero}
                 alt="African menswear portrait"
                 width={1200}
                 height={1500}
@@ -61,7 +58,7 @@ export default function Home() {
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-noir">
             <Image
-              src={heroImages[1]}
+              src={SubHero}
               alt="African fashion portrait"
               width={1200}
               height={1500}

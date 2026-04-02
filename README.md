@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maison Zola
+
+A premium bespoke tailoring demo website for a Liberian-based West African luxury fashion house. Built as a portfolio piece to attract high-end clients locally and across the diaspora.
+
+**Live:** [maison-zola.vercel.app](https://maison-zola.vercel.app)  
+**Stack:** Next.js 16.2 · TypeScript · Tailwind CSS v4 · shadcn/ui · Framer Motion
+
+---
+
+## Overview
+
+Maison Zola presents bespoke African tailoring with a premium, editorial aesthetic. The site is designed to communicate craft, cultural depth, and quiet confidence — targeting diaspora clients and local high-end customers in Monrovia, Liberia.
+
+---
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Home — hero, brand highlights, featured collection, bespoke CTA |
+| `/collections` | Full lookbook with category filtering |
+| `/collections/[slug]` | Individual piece detail with fabric info and related pieces |
+| `/bespoke` | Bespoke tailoring service — process, pricing tiers, CTA |
+| `/about` | Brand story, founder, studio values |
+| `/contact` | Enquiry form with validation and contact info |
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 16.2 (App Router, TypeScript)
+- **Styling:** Tailwind CSS v4 with custom `@theme` tokens
+- **Components:** shadcn/ui
+- **Animation:** Framer Motion
+- **Fonts:** Cormorant Garamond · Playfair Display · DM Sans (via `next/font/google`)
+- **Form:** react-hook-form + zod v4
+- **Deployment:** Vercel
+
+---
+
+## Design System
+
+### Colors
+
+| Token | Hex | Usage |
+|---|---|---|
+| `ink` | `#241b17` | Primary text |
+| `noir` | `#372925` | Dark backgrounds, footer |
+| `cream` | `#f4ede3` | Primary background |
+| `cream-muted` | `#eadbca` | Card surfaces |
+| `stone` | `#887767` | Secondary text |
+| `gold` | `#b5864d` | Accents, labels |
+| `burgundy` | `#6d2232` | Brand color, CTAs |
+| `border` | `rgba(36,27,23,0.12)` | All borders |
+
+### Typography
+
+| Role | Font |
+|---|---|
+| Display / Headlines | Cormorant Garamond |
+| Subheadings | Playfair Display |
+| Body / UI | DM Sans |
+
+### Motion
+
+Framer Motion is used in exactly three places:
+1. Hero section entrance animation
+2. HeroHighlights card slide transition + mobile swipe
+3. Bespoke process timeline scroll-triggered reveals
+
+Everything else uses CSS transitions only.
+
+---
+
+## Project Structure
+
+```
+app/
+  layout.tsx
+  page.tsx
+  collections/
+    page.tsx
+    [slug]/page.tsx
+  bespoke/page.tsx
+  about/page.tsx
+  contact/page.tsx
+
+components/
+  layout/
+    Nav.tsx
+    Footer.tsx
+    PageTransition.tsx
+    navLinks.ts
+  sections/
+    home/HeroHighlights.tsx
+    collections/CollectionsGrid.tsx · FilterBar.tsx
+    bespoke/BespokeHero.tsx · BespokeProcess.tsx · BespokePricing.tsx · BespokeCTA.tsx
+    about/AboutHero.tsx · FounderStory.tsx · StudioValues.tsx · AboutCTA.tsx
+    contact/ContactForm.tsx · ContactInfo.tsx
+  shared/
+    PieceCard.tsx
+
+lib/
+  data/collections.ts
+
+types/
+  index.ts
+
+config/
+  navLinks.ts
+
+public/
+  images/
+    hero-1.jpeg · hero-2.jpeg
+    founder.jpeg · interior.jpeg
+    collections/
+      men-1.jpeg → men-4.jpeg
+      women-1.jpeg → women-4.jpeg
+      ceremonial-1.jpeg → ceremonial-4.jpeg
+      rtw-1.jpeg → rtw-4.jpeg
+    bespoke/
+      process-1.jpeg → process-4.jpeg
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All collection data is static mock data in `lib/data/collections.ts`. No database. 16 pieces across 4 categories: Men, Women, Ceremonial, Ready to Wear.
 
-## Learn More
+To add or edit pieces, update the `pieces` array in `lib/data/collections.ts`. Each piece follows the `Piece` type defined in `types/index.ts`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployed on Vercel. Push to `main` branch triggers automatic deployment.
 
-## Deploy on Vercel
+```bash
+git add .
+git commit -m "your message"
+git push
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Credits
+
+Built by [Robert Dominic](https://linkedin.com/in/robertdominic) · WebNova Studio · Monrovia, Liberia

@@ -1,20 +1,9 @@
-import { Suspense } from 'react'
-
-import { CollectionsGrid } from '@/components/sections/collections/CollectionsGrid'
 import { CollectionsGridSkeleton } from '@/components/sections/collections/CollectionsGridSkeleton'
 
-export const metadata = {
-  title: 'Collections — Maison Zola',
-  description:
-    'Browse the Maison Zola lookbook. Bespoke suiting, ceremonial dressing, and elevated cultural wardrobes.',
-}
-
-export default function CollectionsPage() {
+export default function Loading() {
   return (
     <section className="px-5 pt-20 pb-24 md:px-8">
       <div className="mx-auto max-w-7xl">
-
-        {/* Page header */}
         <div className="mb-12 max-w-xl">
           <p className="font-sans-body text-[10px] tracking-[0.28em] uppercase text-gold mb-3">
             The Collection
@@ -28,11 +17,7 @@ export default function CollectionsPage() {
           </p>
         </div>
 
-        {/* Grid with filter */}
-        <Suspense fallback={<CollectionsGridSkeleton />}>
-          <CollectionsGrid />
-        </Suspense>
-
+        <CollectionsGridSkeleton />
       </div>
     </section>
   )

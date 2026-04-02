@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import { CollectionZoomImage } from '@/components/sections/collections/CollectionZoomImage'
 import { PieceCard } from '@/components/shared/PieceCard'
 import { pieces } from '@/lib/data/collections'
 
@@ -50,20 +50,11 @@ export default async function PiecePage({ params }: Props) {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch lg:gap-16">
 
           {/* Image */}
-          <div className="overflow-hidden rounded-lg border border-border bg-cream-muted lg:h-full">
-            <div
-              className={`relative w-full ${piece.aspectTall ? 'aspect-[3/4]' : 'aspect-[4/3]'} lg:h-full lg:aspect-auto`}
-            >
-              <Image
-                src={piece.image}
-                alt={piece.name}
-                fill
-                priority
-                className="object-cover object-top"
-                sizes="(max-width: 1024px) 100vw, 55vw"
-              />
-            </div>
-          </div>
+          <CollectionZoomImage
+            src={piece.image}
+            alt={piece.name}
+            aspectTall={piece.aspectTall}
+          />
 
           {/* Details */}
           <div className="space-y-8 rounded-xl border border-border p-4 lg:flex lg:h-full lg:flex-col lg:pt-4">

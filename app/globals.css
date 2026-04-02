@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@keyframes expandFromCenter {
+  from {
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+}
+
 @theme {
   --color-ink: #241b17;
   --color-noir: #372925;

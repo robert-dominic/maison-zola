@@ -48,12 +48,30 @@ export default function Home() {
               />
             </div>
             <div className="rounded-2xl border border-border bg-cream-muted p-6">
-              <p className="font-sans-body text-[10px] tracking-[0.28em] uppercase text-burgundy">
-                Brand Mood
+              <div className="mb-3 flex items-center gap-1.5">
+                <span className="h-px w-4 bg-gold opacity-60" />
+                <p className="font-sans-body text-[9px] tracking-[0.28em] uppercase text-gold">
+                  Current Season
+                </p>
+              </div>
+              <p className="font-serif-display text-2xl leading-tight text-ink">
+                The Harmattan Edit
               </p>
-              <p className="mt-3 font-serif-display text-2xl leading-tight text-ink">
-                Liberian poise, continental influence, and a tailoring language built to feel rare.
+              <p className="mt-2 font-sans-body text-[12px] leading-6 text-stone">
+                Lightweight fabrics, sharp silhouettes. Dressed for the dry season without losing
+                presence.
               </p>
+              <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
+                <p className="font-sans-body text-[9px] tracking-[0.2em] uppercase text-stone">
+                  Available now
+                </p>
+                <Link
+                  href="/collections"
+                  className="font-sans-body text-[9px] tracking-[0.2em] uppercase text-burgundy hover:underline"
+                >
+                  View pieces →
+                </Link>
+              </div>
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-noir">

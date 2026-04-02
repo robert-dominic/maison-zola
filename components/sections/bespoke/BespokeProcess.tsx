@@ -62,7 +62,7 @@ export function BespokeProcess() {
         <div className="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:items-start md:gap-10 lg:gap-14">
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute top-0 left-[19px] hidden h-full w-px bg-border md:block" />
+            <div className="absolute top-0 left-[19px] h-full w-0 border-l border-dotted border-md" />
 
             <div className="space-y-10 md:space-y-0">
               {steps.map((step, index) => (

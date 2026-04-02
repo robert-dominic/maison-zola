@@ -1,7 +1,8 @@
 'use client'
 
+import { useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { FilterBar } from '@/components/sections/collections/FilterBar'
 import { PieceCard } from '@/components/shared/PieceCard'
@@ -9,7 +10,22 @@ import { pieces } from '@/lib/data/collections'
 import { type Category } from '@/types'
 
 export function CollectionsGrid() {
+  const searchParams = useSearchParams()
   const [activeCategory, setActiveCategory] = useState<Category>('all')
+
+  useEffect(() => {
+    const cat = searchParams.get('category') as Category | null
+
+    if (
+      cat === 'all' ||
+      cat === 'men' ||
+      cat === 'women' ||
+      cat === 'ceremonial' ||
+      cat === 'ready-to-wear'
+    ) {
+      setActiveCategory(cat)
+    }
+  }, [searchParams])
 
   const filtered =
     activeCategory === 'all'

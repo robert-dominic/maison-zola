@@ -11,7 +11,7 @@ const tiers = [
       '2–3 week turnaround',
     ],
     cta: 'View Collections',
-    href: '/collections',
+    href: '/collections?category=ready-to-wear',
     highlighted: false,
   },
   {

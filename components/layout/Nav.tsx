@@ -56,13 +56,18 @@ export function Nav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative font-sans-body text-[11px] tracking-[0.24em] uppercase transition-colors duration-200 ${
+                  className={`relative font-sans-body text-[11px] tracking-[0.24em] uppercase transition-colors duration-300 ${
                     isActive ? 'text-burgundy' : 'text-stone hover:text-burgundy'
                   }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 h-px w-full bg-burgundy" />
+                    <span
+                      className="absolute -bottom-1 left-0 h-px w-full origin-center bg-burgundy"
+                      style={{
+                        animation: 'expandFromCenter 0.3s ease-out forwards',
+                      }}
+                    />
                   )}
                 </Link>
               )
@@ -109,9 +114,13 @@ export function Nav() {
               transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="mb-5 flex items-center justify-between gap-4 border-b border-border pb-3">
-                <p className="font-serif-display text-xl tracking-[0.18em] text-burgundy">
+                <Link
+                  href="/"
+                  onClick={() => setOpen(false)}
+                  className="font-serif-display text-xl tracking-[0.18em] text-burgundy"
+                >
                   Maison Zola
-                </p>
+                </Link>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}

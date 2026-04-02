@@ -66,7 +66,7 @@ export default async function PiecePage({ params }: Props) {
           </div>
 
           {/* Details */}
-          <div className="flex h-full flex-col space-y-8 rounded-xl border border-border p-4 lg:pt-4">
+          <div className="space-y-8 rounded-xl border border-border p-4 lg:flex lg:h-full lg:flex-col lg:pt-4">
 
             {/* Category + fabric */}
             <div>

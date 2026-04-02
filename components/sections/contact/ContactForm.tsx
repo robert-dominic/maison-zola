@@ -1,18 +1,29 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { motion } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+
 const schema = z.object({
-  name: z.string({ error: 'Please enter your full name' }).min(2),
+  name: z.string({ error: 'Please enter your full name' }).min(2, 'Your name seems too short'),
   email: z.email({ error: 'Please enter a valid email address' }),
   phone: z.string().optional(),
   service: z.enum(['bespoke', 'ready-to-wear', 'ceremonial', 'general'] as const, {
-    error: 'Please select a service',
+    error: 'Please select the service you are interested in',
   }),
-  message: z.string({ error: 'Please tell us a little more' }).min(10),
+  message: z
+    .string({ error: 'Please tell us about your enquiry' })
+    .min(10, 'Tell us a little more about what you are looking for'),
 })
 
 type FormData = z.infer<typeof schema>
@@ -31,8 +42,10 @@ const errorClass = 'mt-1.5 font-sans-body text-[11px] text-burgundy'
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -44,12 +57,18 @@ export function ContactForm() {
     // Replace with your actual form submission logic
     await new Promise((resolve) => setTimeout(resolve, 1000))
     console.log(data)
-    setSubmitted(true)
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setTimeout(() => setSubmitted(true), 400)
   }
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-start gap-4 rounded-lg border border-border bg-cream p-10">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="flex flex-col items-start gap-4 rounded-lg border border-border bg-cream p-10"
+      >
         <div className="flex items-center gap-1.5">
           <span className="h-px w-4 bg-gold opacity-60" />
           <p className="font-sans-body text-[9px] tracking-[0.28em] uppercase text-gold">
@@ -62,12 +81,12 @@ export function ContactForm() {
         <p className="font-sans-body text-sm leading-7 text-stone">
           Your enquiry has been received. Expect a response within 48 hours.
         </p>
-      </div>
+      </motion.div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+    <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
 
       {/* Name + Email */}
       <div className="grid gap-5 sm:grid-cols-2">
@@ -115,16 +134,24 @@ export function ContactForm() {
           <label className="mb-1.5 block font-sans-body text-[10px] tracking-[0.2em] uppercase text-stone">
             Service Interest
           </label>
-          <select {...register('service')} className={inputClass}>
-            <option value="" disabled selected>
-              Select a service
-            </option>
-            {services.map((s) => (
-              <option key={s.value} value={s.value}>
-                {s.label}
-              </option>
-            ))}
-          </select>
+          <Controller
+            control={control}
+            name="service"
+            render={({ field }) => (
+              <Select onValueChange={field.onChange} value={field.value}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a service" />
+                </SelectTrigger>
+                <SelectContent>
+                  {services.map((s) => (
+                    <SelectItem key={s.value} value={s.value}>
+                      {s.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
           {errors.service && <p className={errorClass}>{errors.service.message}</p>}
         </div>
       </div>

@@ -131,10 +131,10 @@ export function HeroHighlights() {
           <p className="font-sans-body text-[10px] tracking-[0.28em] uppercase text-stone">
             {activeItem.label}
           </p>
-          <h2 className="font-serif-display text-xl leading-tight text-ink md:text-[1.5rem]">
+          <h2 className="font-serif-display text-[1rem] leading-tight text-ink md:text-[1.5rem]">
             {activeItem.title}
           </h2>
-          <p className="font-sans-body text-[11px] leading-7 text-stone md:text-[15px]">
+          <p className="font-sans-body text-[12px] leading-7 text-stone md:text-[15px]">
             {activeItem.description}
           </p>
         </motion.div>

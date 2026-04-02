@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import { CollectionsGrid } from '@/components/sections/collections/CollectionsGrid'
 
 export const metadata = {
@@ -26,7 +28,9 @@ export default function CollectionsPage() {
         </div>
 
         {/* Grid with filter */}
-        <CollectionsGrid />
+        <Suspense fallback={<div className="h-24" />}>
+          <CollectionsGrid />
+        </Suspense>
 
       </div>
     </section>

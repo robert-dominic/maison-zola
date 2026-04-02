@@ -54,7 +54,7 @@ export const bespokePricingTiers = [
       '2–3 week turnaround',
     ],
     cta: 'View Collections',
-    href: '/collections?category=ready-to-wear',
+    href: '/collections',
     highlighted: false,
   },
   {

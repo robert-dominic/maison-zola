@@ -1,11 +1,5 @@
 import Link from 'next/link'
-
-const footerLinks = [
-  { href: '/collections', label: 'Collections' },
-  { href: '/bespoke', label: 'Bespoke Services' },
-  { href: '/about', label: 'About Maison Zola' },
-  { href: '/contact', label: 'Book a Consultation' },
-]
+import { footerLinks } from '@/lib/data/footer'
 
 export function Footer() {
   return (

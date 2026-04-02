@@ -3,26 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-const highlights = [
-  {
-    label: 'Private Consultations',
-    title: 'Tailoring shaped through one-on-one fittings and refined direction.',
-    description:
-      'Each commission begins with a considered conversation around silhouette, ceremony, and personal presence.',
-  },
-  {
-    label: 'Ceremonial Dressing',
-    title: 'Designed for occasions that call for cultural depth and visual authority.',
-    description:
-      'Maison Zola approaches celebratory and formal wardrobes with a sharper, more elevated tailoring language.',
-  },
-  {
-    label: 'Continental Perspective',
-    title: "A Liberian house informed by the richness of Africa's great dress traditions.",
-    description:
-      'The brand draws inspiration from pan-African style codes while keeping every piece polished, modern, and personal.',
-  },
-]
+import { heroHighlights } from '@/lib/data/home'
 
 const slideVariants = {
   enter: (direction: number) => ({
@@ -54,22 +35,22 @@ export function HeroHighlights() {
   useEffect(() => {
     const interval = setInterval(() => {
       setDirection(1)
-      setActiveIndex((current) => (current + 1) % highlights.length)
+      setActiveIndex((current) => (current + 1) % heroHighlights.length)
     }, 20000)
 
     return () => clearInterval(interval)
   }, [])
 
-  const activeItem = highlights[activeIndex]
+  const activeItem = heroHighlights[activeIndex]
 
   const showPrevious = () => {
     setDirection(-1)
-    setActiveIndex((current) => (current - 1 + highlights.length) % highlights.length)
+    setActiveIndex((current) => (current - 1 + heroHighlights.length) % heroHighlights.length)
   }
 
   const showNext = () => {
     setDirection(1)
-    setActiveIndex((current) => (current + 1) % highlights.length)
+    setActiveIndex((current) => (current + 1) % heroHighlights.length)
   }
 
   const showItem = (index: number) => {
@@ -85,7 +66,7 @@ export function HeroHighlights() {
           Why Maison Zola
         </p>
         <div className="flex items-center gap-2">
-          {highlights.map((item, index) => (
+          {heroHighlights.map((item, index) => (
             <button
               key={item.label}
               type="button"

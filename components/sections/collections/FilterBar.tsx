@@ -1,14 +1,7 @@
 'use client'
 
+import { collectionFilters } from '@/lib/data/filters'
 import { type Category } from '@/types'
-
-const filters: { label: string; value: Category }[] = [
-  { label: 'All', value: 'all' },
-  { label: 'Men', value: 'men' },
-  { label: 'Women', value: 'women' },
-  { label: 'Ceremonial', value: 'ceremonial' },
-  { label: 'Ready to Wear', value: 'ready-to-wear' },
-]
 
 type FilterBarProps = {
   active: Category
@@ -18,7 +11,7 @@ type FilterBarProps = {
 export function FilterBar({ active, onChange }: FilterBarProps) {
   return (
     <div className="flex flex-wrap items-center gap-2 md:gap-3">
-      {filters.map((filter) => (
+      {collectionFilters.map((filter) => (
         <button
           key={filter.value}
           type="button"

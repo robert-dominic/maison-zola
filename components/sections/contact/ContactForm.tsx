@@ -6,6 +6,7 @@ import { useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import { contactServices } from '@/lib/data/contact'
 import {
   Select,
   SelectContent,
@@ -27,13 +28,6 @@ const schema = z.object({
 })
 
 type FormData = z.infer<typeof schema>
-
-const services = [
-  { value: 'bespoke', label: 'Bespoke Commission' },
-  { value: 'ready-to-wear', label: 'Ready to Wear' },
-  { value: 'ceremonial', label: 'Ceremonial Dressing' },
-  { value: 'general', label: 'General Enquiry' },
-]
 
 const inputClass =
   'w-full rounded-lg border border-border bg-cream px-4 py-3.5 font-sans-body text-sm text-ink placeholder:text-stone/50 outline-none transition-colors duration-200 focus:border-burgundy/50 focus:ring-0'
@@ -143,7 +137,7 @@ export function ContactForm() {
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  {services.map((s) => (
+                  {contactServices.map((s) => (
                     <SelectItem key={s.value} value={s.value}>
                       {s.label}
                     </SelectItem>

@@ -3,45 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-import ProcessImage1 from '@/public/images/bespoke/process-1.jpeg'
-import ProcessImage2 from '@/public/images/bespoke/process-2.jpeg'
-import ProcessImage3 from '@/public/images/bespoke/process-3.jpeg'
-import ProcessImage4 from '@/public/images/bespoke/process-4.jpeg'
-
-const steps = [
-  {
-    number: '01',
-    title: 'The Consultation',
-    description:
-      'We begin with a private conversation — about the occasion, the silhouette, and what the garment needs to say. No templates. No shortcuts.',
-  },
-  {
-    number: '02',
-    title: 'Fabric Selection',
-    description:
-      'You choose from our curated library of West African and international textiles. Kente, Aso-Oke, Italian wool, Belgian linen — each chosen for its character.',
-  },
-  {
-    number: '03',
-    title: 'Pattern & Fitting',
-    description:
-      'A pattern is drafted specifically for your measurements. The first fitting reveals the silhouette. Adjustments are made until the fit is precise.',
-  },
-  {
-    number: '04',
-    title: 'Construction',
-    description:
-      'Your piece is cut and sewn by hand in our Monrovia atelier. Each seam, each detail, each finishing touch is deliberate.',
-  },
-  {
-    number: '05',
-    title: 'Final Delivery',
-    description:
-      'The finished piece is pressed, inspected, and delivered to you. Wearing it should feel like it was always yours.',
-  },
-]
-
-const processImages = [ProcessImage1, ProcessImage2, ProcessImage3, ProcessImage4]
+import { bespokeProcessImages, bespokeProcessSteps } from '@/lib/data/bespoke'
 
 export function BespokeProcess() {
   return (
@@ -65,7 +27,7 @@ export function BespokeProcess() {
             <div className="absolute top-0 left-[19px] h-full w-0 border-l border-dotted border-md" />
 
             <div className="space-y-10 md:space-y-0">
-              {steps.map((step, index) => (
+              {bespokeProcessSteps.map((step, index) => (
                 <motion.div
                   key={step.number}
                   initial={{ opacity: 0, y: 24 }}
@@ -106,7 +68,7 @@ export function BespokeProcess() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="hidden md:grid md:grid-cols-2 md:gap-4"
           >
-            {processImages.map((image, index) => (
+            {bespokeProcessImages.map((image, index) => (
               <div
                 key={index}
                 className="overflow-hidden rounded-xl border border-border bg-cream-muted"

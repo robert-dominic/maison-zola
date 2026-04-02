@@ -1,48 +1,6 @@
 import Link from 'next/link'
 
-const tiers = [
-  {
-    name: 'Ready to Wear',
-    description: 'Select pieces from our existing collection, tailored to your measurements.',
-    inclusions: [
-      'Choice from current collection',
-      'Basic alterations included',
-      'One fitting session',
-      '2–3 week turnaround',
-    ],
-    cta: 'View Collections',
-    href: '/collections?category=ready-to-wear',
-    highlighted: false,
-  },
-  {
-    name: 'Bespoke',
-    description: 'A fully custom garment built from scratch around your body and vision.',
-    inclusions: [
-      'Private consultation session',
-      'Full pattern from your measurements',
-      'Fabric selection from our library',
-      'Two to three fittings',
-      '4–6 week turnaround',
-    ],
-    cta: 'Book a Consultation',
-    href: '/contact',
-    highlighted: true,
-  },
-  {
-    name: 'Ceremonial Commission',
-    description: 'For weddings, state occasions, and cultural ceremonies requiring elevated craft.',
-    inclusions: [
-      'Extended consultation process',
-      'Priority fabric sourcing',
-      'Cultural direction and styling',
-      'Multiple fittings',
-      'Custom embellishment options',
-    ],
-    cta: 'Enquire Now',
-    href: '/contact',
-    highlighted: false,
-  },
-]
+import { bespokePricingTiers } from '@/lib/data/bespoke'
 
 export function BespokePricing() {
   return (
@@ -64,7 +22,7 @@ export function BespokePricing() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {tiers.map((tier) => (
+          {bespokePricingTiers.map((tier) => (
             <div
               key={tier.name}
               className={`flex flex-col rounded-lg border p-6 md:p-7 ${

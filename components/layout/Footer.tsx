@@ -43,7 +43,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white-soft px-5 py-4 md:px-8">
         <p className="text-center font-sans-body text-[10px] tracking-[0.18em] uppercase text-stone">
-          Copyright 2026 Maison Zola. Designed and built by WebNova Studio.
+          &copy;2026 Maison Zola. Designed and built by WebNova Studio.
         </p>
       </div>
     </footer>

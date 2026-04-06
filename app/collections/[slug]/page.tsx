@@ -38,7 +38,7 @@ export default async function PiecePage({ params }: Props) {
       <div className="mx-auto max-w-7xl">
 
         {/* Breadcrumb */}
-        <div className="mb-10 flex items-center gap-2 font-sans-body text-[10px] tracking-[0.2em] uppercase text-stone">
+        <div className="hidden md:block mb-10 flex items-center gap-2 font-sans-body text-[10px] tracking-[0.2em] uppercase text-stone">
           <Link href="/collections" className="hover:text-burgundy transition-colors duration-200">
             Collections
           </Link>
@@ -47,7 +47,7 @@ export default async function PiecePage({ params }: Props) {
         </div>
 
         {/* Hero split */}
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch lg:gap-16 mt-6 md:mt-0">
 
           {/* Image */}
           <CollectionZoomImage
